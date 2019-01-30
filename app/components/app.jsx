@@ -25,7 +25,9 @@ export default class App extends React.Component {
 		const {notes} = this.state;
 		return (
 			<div>
-				<button onClick={this.addNote}>add new</button>
+				<button
+					className='add-note'
+					onClick={this.addNote}>add new</button>
 				<Notes 
 					onDelete={this.deleteNote}
 					notes={notes}
