@@ -2,11 +2,11 @@ import React from 'react';
 import Notes from './notes';
 import uuid from 'uuid'
 import connect from '../libs/connect';
+import NoteActions from '../actions/NoteActions';
 
 class App extends React.Component {
 	
 	render() {
-		console.log(this.props)
 		const {notes} = this.props;
 		return (
 			<div>
@@ -23,43 +23,28 @@ class App extends React.Component {
 	}
 
 	addNote = () => {
-		this.setState({
-			notes: this.state.notes.concat([{
-					id: uuid.v4(),
-					task: 'Something new'
-			}])
+		this.props.create({
+			id: uuid.v4(),
+			task: 'Something new'
 		})
 	}
 
 	deleteNote = (id, e) => {
 		e.stopPropagation()
-		this.setState({
-			notes: this.state.notes.filter(note => note.id !== id)
-		})
+		this.props.delete(id)
 	}
 
 	activateNoteEdit = (id) => {
-		this.setState({
-			notes: this.state.notes.map(note => {
-				if (note.id === id ) note.editing = true;
-				return note;
-			})
-		})
+		this.props.update({id, editing:true})
 	}
 
 	editNote = (id, task) => {
-		this.setState({
-			notes: this.state.notes.map(note => {
-				if (note.id === id ) {
-					note.editing = false;
-					note.task = task;
-				}
-				return note;
-			})
-		})
+		this.props.update({id, task, editing:false})
 	}
 }
 
 export default connect(({notes}) => ({
 	notes
-}))(App)
+}),
+	NoteActions
+)(App)
