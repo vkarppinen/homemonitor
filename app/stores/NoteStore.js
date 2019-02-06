@@ -1,7 +1,7 @@
 import uuid from 'uuid';
 
 
-class NoteStore {
+export default class NoteStore {
 
   constructor() {
     this.notes = [
