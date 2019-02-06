@@ -9,7 +9,7 @@ export default ({
   onDelete=() => {}}
 ) => {
   
-  return (
+  return (  
     <ul className='notes'>{notes.map(({id, editing, task}) =>
       <li key={id}>
         <Note className='note' onClick={onNoteClick.bind(null, id)}>
