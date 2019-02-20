@@ -19,6 +19,24 @@ module.exports = {
           use: {
             loader: "babel-loader"
           }
+        },
+        {
+          test: /\.(scss|css)$/,
+          use: [
+            'style-loader',
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: function() {
+                  return [
+                    require('autoprefixer')
+                  ];
+                }
+              }
+            },
+            'sass-loader'
+          ]
         }
       ]
     },
