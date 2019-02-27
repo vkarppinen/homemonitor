@@ -1,14 +1,19 @@
-import React from 'react';
+import * as React from 'react';
 import Chart from './Chart'
 import Status from './Status'
+import {PriceData} from './interfaces'
 
+interface Model {
+  data: Array<PriceData>
+  threshold: number;
+}
 
-class App extends React.Component {
-  constructor() {
-    super();
+class App extends React.Component<void, Model> {
+  constructor(props : void) {
+    super(props);
     this.state = {
       data: [],
-      threshold: '6.00'
+      threshold: 6.00
     }
     this.updateThreshold = this.updateThreshold.bind(this)
   }
@@ -41,7 +46,7 @@ class App extends React.Component {
     );
   }
 
-  updateThreshold(e) {
+  updateThreshold( e : React.BaseSyntheticEvent ) {
     this.setState({
       threshold: e.target.value
     })

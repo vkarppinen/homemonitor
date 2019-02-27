@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import {
   LineChart,
   Line,
@@ -6,8 +6,9 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip } from 'recharts';
+import {PriceDataArray} from './interfaces'
 
-const Chart = ({data}) => {
+const Chart = ( {data} : PriceDataArray) => {
 
   if (data.length > 0) {
     return (

@@ -23,7 +23,7 @@ const common = {
   ],
 
   resolve: {
-      extensions: ['.js', '.jsx']
+      extensions: ['.js', '.jsx', '.ts', '.tsx']
   }
 }
 
@@ -62,13 +62,22 @@ const production = {
 }
 
 const development = {
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
+        }
+      },
+      {
+        test: /\.(ts|tsx?$)/,
+        include: path.resolve(__dirname, 'src'),
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader'
         }
       },
       {

@@ -1,6 +1,14 @@
-import React from 'react';
+import * as React from 'react';
+import { PriceData } from './interfaces'
 
-const Status = (props) => {
+
+interface Status {
+  threshold: number;
+  data: Array<PriceData>
+  as: string;
+}
+
+const Status = ( props : Status ) => {
   let threshold = props.threshold;
   
   const getStatus = () => {
@@ -10,15 +18,10 @@ const Status = (props) => {
     let current = props.data.find((elem) => {
       return elem.hour == currentHour + ':00'
     })
-    try {
-      let price = parseFloat(current.price)
-      if (price && price > threshold)
-        return 'Not a good idea to go to sauna.'
-      else
-        return 'It definitely is sauna time.' 
-    } catch (error) {
-      // Ignore
-    }
+    if (current && parseFloat(current.price) > threshold)
+      return 'Not a good idea to go to sauna.'
+    else
+      return 'It definitely is sauna time.' 
   }
   const statusText = getStatus()
   
