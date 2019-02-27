@@ -6,9 +6,14 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip } from 'recharts';
-import {PriceDataArray} from './interfaces'
+import {PriceData} from './interfaces'
 
-const Chart = ( {data} : PriceDataArray) => {
+interface Props {
+  data: PriceData[]
+}
+
+
+const Chart = ( {data} : Props ) => {
 
   if (data.length > 0) {
     return (

@@ -4,7 +4,7 @@ import Status from './Status'
 import {PriceData} from './interfaces'
 
 interface Model {
-  data: Array<PriceData>
+  data: Array<PriceData>;
   threshold: number;
 }
 
