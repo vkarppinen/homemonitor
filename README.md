@@ -1,9 +1,5 @@
-# Saunamonitor
+# Homemonitor
 
-Is it saunatime?
+Dashboard for home automation
 
 This is a sample project to experiment with modern JavaScript.
-
-#### TODO
-
-- split webpack configuration for
